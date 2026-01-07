@@ -18,8 +18,8 @@ const [isLoggedIn, setisLoggedIn] = useState(false);
 
 <Route path='/' element={<Home/>} />
 <Route path='/login' element={<Login/>} />
-<Route path='/login' element={<Signup/>} />
-<Route path='/login' element={<Dashboard/>} />
+<Route path='/signup' element={<Signup/>} />
+<Route path='/dashboard' element={<Dashboard/>} />
 
 
 

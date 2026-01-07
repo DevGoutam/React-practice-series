@@ -2,6 +2,7 @@ import React from "react";
 
 import logo from "../assets/Logo.svg";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Navbar = (props) => {
   let isLoggedIn = props.isLoggedIn;
@@ -38,7 +39,7 @@ const Navbar = (props) => {
 
         {!isLoggedIn && (
           <Link to="/signup">
-            <button>Sign Up</button>
+            <button >Sign Up</button>
           </Link>
         )}
 
@@ -47,6 +48,7 @@ const Navbar = (props) => {
             <button
               onClick={() => {
                 setisLoggedIn(false);
+                toast.success("Logged Out");
                 
               }}
             >
