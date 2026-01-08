@@ -1,49 +1,73 @@
-import React from 'react'
-import {AiOutlineEye, AiOutlineEyeInvisible} from "react-icons/ai"
+import React from "react";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+const LoginForm = ({setIsLoggedIn}) => {
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
-const LoginForm = () => {
-  const [formData , setFormData] = useState({email: "", password:"" })
-
-  function changeHandler(event){
-    setFormData((prevData)=>({
+  function changeHandler(event) {
+    setFormData((prevData) => ({
       ...prevData,
-      [event.target.name]:event.target.vlaue
-    }))
-
-    const [showPassword, setShowPassword] = useState(false);
-
+      [event.target.name]: event.target.value,
+    }));
   }
 
+  
+  function submitHandler(event){
+    event.preventDefault();
+    setIsLoggedIn(true);
+    toast.success("Logged In");
+    navigate("/dashboard")
+    
+    
+
+
+  }
   return (
-    <form>
-      <lable>
-        <p>Email Address<sup>*</sup></p>
+    <form onSubmit={submitHandler}>
+      <label>
+        <p>
+          Email Address<sup>*</sup>
+        </p>
 
         <input
-            required
-            type='text'
-            value={formData.email}
-            onChange={changeHandler}
-            placeholder='Enter email id'
+          required
+          type="email"
+          value={formData.email}
+          onChange={changeHandler}
+          placeholder="Enter email id"
+          name="email"
         />
-      </lable>
-      <lable>
-        <p>Password<sup>*</sup></p>
+      </label>
+      <label>
+        <p>
+          Password<sup>*</sup>
+        </p>
 
         <input
-            required
-            type={showPassword ? ("text") : ("password")}
-            value={formData.password}
-            onChange={changeHandler}
-            placeholder='Enter Password'
+          required
+          type={showPassword ? "text" : "password"}
+          value={formData.password}
+          onChange={changeHandler}
+          placeholder="Enter Password"
+          name="password"
         />
 
-        <span>
-          {showPassword ? (AiOutlineEye) : (AiOutlineEyeInvisible)}
+        <span onClick={() => setShowPassword((prev) => !prev)}>
+          {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
         </span>
-      </lable>
-    </form>
-  )
-}
 
-export default LoginForm
+        <Link to="#">
+          <p>Forgot Password</p>
+        </Link>
+      </label>
+
+      <button className="cursor-pointer ">Sign In</button>
+    </form>
+  );
+};
+
+export default LoginForm;

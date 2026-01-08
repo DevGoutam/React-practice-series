@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 const Navbar = (props) => {
   let isLoggedIn = props.isLoggedIn;
-  let setisLoggedIn = props.setisLoggedIn;
+  let setIsLoggedIn = props.setIsLoggedIn;
   return (
     <div className="flex">
       <Link to="/">
@@ -39,15 +39,15 @@ const Navbar = (props) => {
 
         {!isLoggedIn && (
           <Link to="/signup">
-            <button >Sign Up</button>
+            <button>Sign Up</button>
           </Link>
         )}
 
         {isLoggedIn && (
           <Link to="/">
-            <button
+            <button className="cursor-pointer"
               onClick={() => {
-                setisLoggedIn(false);
+                setIsLoggedIn(false);
                 toast.success("Logged Out");
                 
               }}
@@ -57,11 +57,11 @@ const Navbar = (props) => {
           </Link>
         )}
 
-        {
+        {isLoggedIn && (
           <Link to="/dashboard">
             <button>Dashboard</button>
           </Link>
-        }
+        )}
       </div>
     </div>
   );
