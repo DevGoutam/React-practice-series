@@ -19,6 +19,8 @@ const LoginForm = ({ setIsLoggedIn }) => {
     event.preventDefault();
     setIsLoggedIn(true);
     toast.success("Logged In");
+    console.log("Printing the formdata ");
+    console.log(formData);
     navigate("/dashboard");
   }
   return (
@@ -65,7 +67,7 @@ const LoginForm = ({ setIsLoggedIn }) => {
         </Link>
       </label>
 
-      <button className="cursor-pointer  bg-yellow-50 font-medium text-richblack-900 rounded-[8px] px-[12px] py-[8px]   ">Sign In</button>
+      <button className="cursor-pointer  bg-yellow-50 font-medium text-richblack-900 rounded-[8px] px-[12px] py-[8px] mt-6   ">Sign In</button>
     </form>
   );
 };
