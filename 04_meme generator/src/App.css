@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+.background{
+  --s: 200px; /* control the size*/
+  --c1: #000000;
+  --c2: #242424;
+  --c3: #222027;
+  --c4: #383333;
+  --c5: #383838;
+  
+  --_g: var(--c1) 25%,var(--c2) 0 50%,#0000 0;
+  --_l1: var(--c5) 0 1px,#0000 0 calc(25% - 1px),var(--c5) 0 25%;
+  --_l2: var(--c5) 0 1px,#0000 0 calc(50% - 1px),var(--c5) 0 50%;
+  background:
+    repeating-linear-gradient( 45deg,var(--_l1)),
+    repeating-linear-gradient(-45deg,var(--_l1)),
+    repeating-linear-gradient(  0deg,var(--_l2)),
+    repeating-linear-gradient( 90deg,var(--_l2)),
+    conic-gradient(from 135deg at 25% 75%,var(--_g)),
+    conic-gradient(from 225deg at 25% 25%,var(--_g)),
+    conic-gradient(from  45deg at 75% 75%,var(--_g)),
+    conic-gradient(from -45deg at 75% 25%,var(--_g)),
+    repeating-conic-gradient(var(--c3) 0 45deg,var(--c4) 0 90deg);  
+  background-size: var(--s) var(--s);
+}
